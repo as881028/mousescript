@@ -228,12 +228,12 @@ function OnEvent(event, arg)
                 end
                 
                if (i == 2 or i % 30 == 0) then
-                    Sleep(200)
+                    Sleep(400)
                     pressKeySelf("f3")
                end
                
                if (i == 2) then
-                    Sleep(200)
+                    Sleep(400)
                     pressKeySelf("v")
                end
                
@@ -273,7 +273,7 @@ function OnEvent(event, arg)
                      Sleep(200, 300)
                 end
                 
-                if (i == 45 or i == 12) then
+                if (i == 45 or i == 12 or i == 30) then
                      Sleep(50, 100)
                      PressKey('up', 'a')
                      Sleep(50, 100)
@@ -281,7 +281,7 @@ function OnEvent(event, arg)
                      Sleep(200, 300)
                 end
                 
-                if (i == 50 or i == 10) then
+                if (i == 50 or i == 10 or i == 33) then
                      Sleep(50, 100)
                      PressKey('down', 'a')
                      Sleep(50, 100)
@@ -289,12 +289,12 @@ function OnEvent(event, arg)
                      Sleep(200, 300)
                 end
                 
-                if (i == 15) then
-                    Sleep(200)
+                if (i % 20 == 0) then
+                    Sleep(600)
                     pressKeySelf("4")
                 end
 
-                if (i == 5 or i == 59) then
+                if (i == 5 or i == 30 or i == 59) then
                     Sleep(200)
                     pressKeySelf("T")
                 end
@@ -335,10 +335,12 @@ function OnEvent(event, arg)
                     PressAndReleaseKey("w")
                     PressAndReleaseKey("e")
                 end
+                
                 if (i % 15 == 0) then
+                    Sleep(150)
                     pressKeySelf("f")
                 end
-                
+            
               Sleep(math.random(600, 700))
             end
         end
