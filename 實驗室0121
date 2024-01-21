@@ -194,7 +194,15 @@ function OnEvent(event, arg)
             return orig_Sleep(x - x % 1)
         end
     end
-
+    
+    function contains(table, val)
+   for i=1,#table do
+      if table[i] == val then 
+         return true
+      end
+   end
+   return false
+end
     --OutputLogMessage("Event: "..event.." Arg: "..arg.."\n")
 
     function pressKeySelf(key)
@@ -204,6 +212,47 @@ function OnEvent(event, arg)
 
         Sleep(math.random(100, 120))
     end
+    
+    function ctrlPress()
+       if (math.random(1, 100) >= 40) then
+            Sleep(600, 700)
+            pressKeySelf("lctrl")
+            Sleep(300, 400)
+       end
+    end
+    
+    
+    function randomPress(key)
+       if (math.random(1, 100) >= 40) then
+            Sleep(600, 700)
+            pressKeySelf(key)
+            Sleep(300, 400)
+       end
+    end
+
+    function move(key)
+        Sleep(50, 100)
+        PressKey(key, 'a')
+        Sleep(50, 100)
+        ReleaseKey(key, 'a')
+        Sleep(200, 300)
+        ctrlPress()
+    end 
+  
+  function qwe()
+     Sleep(800)
+    local randomNumber = math.random(1, 99)  -- 生成一個1到99之間的隨機數
+ 
+    if randomNumber <= 33 then
+        pressKeySelf("q")
+    elseif randomNumber <= 66 and randomNumber > 33 then
+        pressKeySelf("w")
+    else
+        pressKeySelf("e")
+    end
+
+    Sleep(150)  -- 或根據需要調整時間
+end
 
     if (event == "MOUSE_BUTTON_PRESSED" and arg == 5) then     
         while (not IsKeyLockOn("capslock")) do
@@ -219,14 +268,9 @@ function OnEvent(event, arg)
                 end
                 
                 if (i == 1) then
-                    Sleep(150)
-                    pressKeySelf("q")
-                    Sleep(150)
-                    pressKeySelf("w")
-                    Sleep(150)
-                    pressKeySelf("e")
+                    qwe()
                 end
-                
+  
                if (i == 2 or i % 30 == 0) then
                     Sleep(200)
                     pressKeySelf("f3")
@@ -259,114 +303,60 @@ function OnEvent(event, arg)
                if (i % 14  == 0 or i == 13) then
                     pressKeySelf("f5")
                end 
-
-              if (i == 14  or i == 47) then
-                     Sleep(100, 200)
-                     PressKey('up', 'a')
-                     Sleep(50, 100)
-                     ReleaseKey('up', 'a')
-                     Sleep(200, 300)
-               end
                
-               if (i == 17 or i == 44) then
-                     Sleep(100, 200)
-                     PressKey('down', 'a')
-                     Sleep(50, 100)
-                     ReleaseKey('down', 'a')
-                end
-                             
-                           
-              if (math.modf((i / 2) % 2) == 0) then
-              -- if i % 8 == 1 or i % 8 == 2 or i % 8 == 3 or i % 8 == 4 then
-                     Sleep(400, 500)
-                     PressKey('left', 'a')
-                     Sleep(50, 100)
-                     ReleaseKey('left', 'a')
-                     Sleep(600, 700)
-                     pressKeySelf("lctrl")
-                     Sleep(300, 400)
-               end
+               local left = {16,19,35,37}
+               local right = {17,18,36,38}
+               local up= {5, 11, 12, 26, ,31 ,32, 45, 51, 52}
+               local down = {7, 9, 14, 27, 29, 34, 47, 49, 54}
                
-              if (math.modf((i / 2) % 2) == 1) then
-             -- if i % 8 == 5 or i % 8 == 6 or i % 8 == 7 or i % 8 == 0 then
-                     Sleep(400, 500)
-                     PressKey('right', 'a')
-                     Sleep(50, 100)
-                     ReleaseKey('right', 'a')
-                     Sleep(600, 700)
-                     pressKeySelf("lctrl")
-                      Sleep(300, 400)
-               end            
+             if contains(left , i) then
+                  move('left')
+              end
+                 
+            if contains(right, i) then
+                  move('right')
+             end
                
-                if (i == 3 or i % 15 == 0) then
+             if contains(up, i) then
+                move('up')
+             end
+               
+             if contains(down, i) then
+                move('down')
+             end
+             
+               if (i == 3 or i % 15 == 0) then
                     Sleep(600)
                     pressKeySelf("4")
-                end
+               end
 
                if (i == 60) then
                     Sleep(600)
                     pressKeySelf("b")
                 end
                 
-                if (i == 18 or i == 43 or i == 60) then
+                if (i % 4 == 0) then
                     Sleep(200)
-                    pressKeySelf("T")
+                    randomPress("T")
                 end
                 
-                if (i == 17 or i == 42 or i == 60) then
+               if (i % 4 == 1) then
                     Sleep(200)
-                    pressKeySelf("R")
+                    randomPress("R")
                 end
                 
-                if (i == 12 or I == 32 or i == 41) then
+                if (i == 12 or i == 32 or i == 41) then
                     Sleep(300)
                     pressKeySelf("3")
                 end
                 
                 -- 幽暗
                 if (i % 1 == 0) then
-                    --PressAndReleaseKey("c")
-                    --Sleep(200)
-                    
-                    if (math.random(1, 100) >= 40) then
-                        pressKeySelf("lctrl")
-                        Sleep(100, 200)
-                    end
-                    
-                    --if (math.random(1, 100) >= 60) then
-                    --    pressKeySelf("lctrl")
-                    --    Sleep(100, 200)
-                    --end
-                end
-     
-                if (i % math.random(7, 12) == 0) then
-                    pressKeySelf("q")
-                    pressKeySelf("w")
-                    pressKeySelf("e")
-                end
-
-                if (i % math.random(7, 12) == 0) then
-                    pressKeySelf("w")
-                    pressKeySelf("e")
-                    pressKeySelf("q")
-                end
-
-                if (i % math.random(7, 12) == 0) then
-                    pressKeySelf("e")
-                    pressKeySelf("q")
-                    pressKeySelf("w")
+                    ctrlPress()
                 end
                 
-                  if (i % math.random(8, 11) == 0) then
-                    pressKeySelf("q")
-                    pressKeySelf("w")
-                    pressKeySelf("e")
-                end
-                
-                if (i % math.random(8, 11) == 0) then
-                    pressKeySelf("w")
-                    pressKeySelf("q")
-                    pressKeySelf("e")
+                if (i % 2 == 1) then
+                    qwe()
                 end
             
                 if (i % 6 == 0) then
@@ -376,7 +366,6 @@ function OnEvent(event, arg)
                     PressAndReleaseKey("e")
                 end
                 
-              --Sleep(math.random(600, 700))
               Sleep(math.random(400, 500))
             end
         end
