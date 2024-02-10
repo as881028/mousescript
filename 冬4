@@ -215,7 +215,7 @@ end
     
     function ctrlPress()
        if (math.random(1, 100) >= 40) then
-            Sleep(600, 700)
+            Sleep(300, 400)
             pressKeySelf("lctrl")
             Sleep(300, 400)
        end
@@ -233,26 +233,21 @@ end
     function move(key)
         Sleep(200, 230)
         PressKey(key, 'a')
-        Sleep(100, 110)
+        Sleep(50, 60)
         ReleaseKey(key, 'a')
-        Sleep(200, 300)
-        ctrlPress()
+        Sleep(100, 200)
+--        ctrlPress()
     end 
     
     function downjump()
-        Sleep(300, 400)
         PressKey('down')
-       Sleep(50, 100)
-        PressKey('lalt')
-        Sleep(50, 100)
-        ReleaseKey('lalt')
-        Sleep(100, 200)
+        Sleep(50)
+        pressKeySelf('lalt')
         ReleaseKey('down')
-        Sleep(100, 200)
     end 
     
     function simpleup()
-       Sleep(400, 500)
+       Sleep(600, 700)
        PressKey('up')
        Sleep(200, 300)
        ReleaseKey('up')
@@ -276,7 +271,7 @@ end
 
     if (event == "MOUSE_BUTTON_PRESSED" and arg == 5) then     
         while (not IsKeyLockOn("capslock")) do
-            for i = 1, 25 do
+            for i = 1, 36 do
                 OutputLogMessage(i)
                 if (IsKeyLockOn("capslock")) then                
                     break
@@ -285,8 +280,8 @@ end
                local left = {3, 14}
                local right = {10, 11, 12}
                local up= {}
-               local down = {2, 6, 9, 24}
-               local dj = {7, 25}
+               local down = {2, 6, 9, 35}
+               local dj = {7, 36}
                local su = {1}
              
              if contains(su, i) then
@@ -337,14 +332,9 @@ end
                     Sleep(300)
                     pressKeySelf("6")
                end
-                       
-               if (i == 23) then
-                    Sleep(200)
-                    pressKeySelf("5")
-               end
                
                if (i == 4) then
-                    Sleep(200)
+                    Sleep(250)
                     pressKeySelf("O")
                end
                
@@ -367,18 +357,18 @@ end
                     pressKeySelf("b")
                 end
                 
-                if (i == 24) then
-                    Sleep(200)
+                if (i == 35) then
+                    Sleep(400)
                     randomPress("T")
                 end
                 
                if (i % 4 == 1) then
-                    Sleep(200)
+                    Sleep(150)
                     randomPress("R")
                 end
                 
-                -- 幽暗
-                if (i % 1 == 0) then
+          
+                if (i >=13 and i % 1 == 0) then
                     ctrlPress()
                 end
                 
@@ -386,13 +376,13 @@ end
                     qwe()
                 end
             
-                if (i % 6 == 0) then
-                    PressAndReleaseKey("q")
-                    PressAndReleaseKey("w")
-                    PressAndReleaseKey("e")
-                end
+         --       if (i % 6 == 0) then
+          --          PressAndReleaseKey("q")
+          --          PressAndReleaseKey("w")
+         --           PressAndReleaseKey("e")
+          --      end
                 
-              Sleep(math.random(400, 500))
+              Sleep(math.random(300, 350))
             end
         end
     end
