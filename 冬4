@@ -215,9 +215,9 @@ end
     
     function ctrlPress()
        if (math.random(1, 100) >= 40) then
-            Sleep(300, 400)
+            Sleep(200, 250)
             pressKeySelf("lctrl")
-            Sleep(300, 400)
+            Sleep(200, 250)
        end
     end
     
@@ -233,13 +233,14 @@ end
     function move(key)
         Sleep(200, 230)
         PressKey(key, 'a')
-        Sleep(50, 60)
+        Sleep(65)
         ReleaseKey(key, 'a')
         Sleep(100, 200)
 --        ctrlPress()
     end 
     
     function downjump()
+        Sleep(200)
         PressKey('down')
         Sleep(50)
         pressKeySelf('lalt')
@@ -247,15 +248,15 @@ end
     end 
     
     function simpleup()
-       Sleep(600, 700)
+       Sleep(900)
        PressKey('up')
        Sleep(200, 300)
        ReleaseKey('up')
-       Sleep(100, 200)
+       Sleep(200)
     end
   
   function qwe()
-     Sleep(800)
+     Sleep(700)
     local randomNumber = math.random(1, 99)  -- 生成一個1到99之間的隨機數
  
     if randomNumber <= 33 then
@@ -266,12 +267,12 @@ end
         pressKeySelf("e")
     end
 
-    Sleep(150)  -- 或根據需要調整時間
+    Sleep(200)  -- 或根據需要調整時間
 end
 
     if (event == "MOUSE_BUTTON_PRESSED" and arg == 5) then     
         while (not IsKeyLockOn("capslock")) do
-            for i = 1, 36 do
+            for i = 1, 42 do
                 OutputLogMessage(i)
                 if (IsKeyLockOn("capslock")) then                
                     break
@@ -280,8 +281,8 @@ end
                local left = {3, 14}
                local right = {10, 11, 12}
                local up= {}
-               local down = {2, 6, 9, 35}
-               local dj = {7, 36}
+               local down = {2, 6, 9, 41}
+               local dj = {7, 42}
                local su = {1}
              
              if contains(su, i) then
@@ -338,12 +339,13 @@ end
                     pressKeySelf("O")
                end
                
-               
                if (i == 1) then
+                    Sleep(500)
                     pressKeySelf("f4")
                end 
                
                if (i == 13) then
+                    Sleep(500)
                     pressKeySelf("f5")
                end 
              
@@ -357,8 +359,8 @@ end
                     pressKeySelf("b")
                 end
                 
-                if (i == 35) then
-                    Sleep(400)
+                if (i == 41) then
+                    Sleep(500)
                     randomPress("T")
                 end
                 
