@@ -280,8 +280,8 @@ end
                 
                local left = {2,3,4,5,6,7,8,9,23,24}
                local right = {10,11,13,15,16,17,18,19,20,22}
-               local up= {12,13,14,25,26}
-               local down = {28}
+               local up= {12,13,14,25}
+               local down = {}
                local dj = {21}
                local su = {}
              
@@ -308,12 +308,9 @@ end
              if contains(down, i) then
                 move('down')
              end
-             
-             if i <= 25 then
-                goto continue
-             end
+           
                
-       if (i == 27) then
+             if (i == 16) then
                     Sleep(300, 350)
                     pressKeySelf("3")
                     Sleep(100, 200)
@@ -347,9 +344,6 @@ end
                 if (i % 2 == 1) then
                     qwe()
                 end
-            
-    
-                ::continue::
        
               
                if (i == 1) then
